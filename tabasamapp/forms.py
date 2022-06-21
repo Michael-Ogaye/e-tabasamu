@@ -28,6 +28,9 @@ class TransactionForm(forms.ModelForm):
         fields=['type','amount']
 
 
-class UpdateAccountForm(forms.ModelForm)
+class UpdateAccountForm(forms.ModelForm):
+    class Meta:
+        model=UserAccount
+        fields=['name','phone_no','account_picture']
 
 
