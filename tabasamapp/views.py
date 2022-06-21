@@ -5,7 +5,7 @@ from .models import Facility,Transaction,AccountStatement,UserAccount
 
 # Create your views here.
 def index(request):
-    return render(request, 'base.html')
+    return render(request, 'tabasamapp/index.html')
 
 def signup(request):
     if request.method == 'POST':
