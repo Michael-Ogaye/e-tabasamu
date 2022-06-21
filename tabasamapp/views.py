@@ -38,6 +38,7 @@ def make_transaction(request):
         form = TransactionForm(request.POST)
         if form.is_valid():
             transaction=form.save()
+            return redirect('index')
     else:
         form = TransactionForm()
     return render(request, 'tabasamapp/transaction.html', {'form': form})
