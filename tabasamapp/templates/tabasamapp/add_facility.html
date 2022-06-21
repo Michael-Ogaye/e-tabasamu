@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load cloudinary %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container w-50 mx-auto p-5" style="background-color: aliceblue;">
+    <div class="row">
+        <h6 class="text-center">Add facility</h6>
+
+        <div class=" w-100">
+            <form action="" method="post" novalidate>
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-sm btn-dark">Add</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
