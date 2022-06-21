@@ -21,3 +21,23 @@ def signup(request):
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+def add_facility(request):
+    if request.method == 'POST':
+        form = FacilityForm(request.POST, request.FILES)
+        if form.is_valid():
+            
+            facility=form.save()
+            return redirect('index')
+    else:
+        form = FacilityForm()
+    return render(request, 'tabasamapp/add_facility.html', {'form': form})
+
+
+def make_transaction(request):
+    if request.method == 'POST':
+        form = TransactionForm(request.POST)
+        if form.is_valid():
+            transaction=form.save()
+    else:
+        form = TransactionForm()
+    return render(request, 'tabasamapp/transaction.html', {'form': form})
