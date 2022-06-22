@@ -5,7 +5,14 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="acc w-50 mx-auto"> 
+<div class="standings mx-auto w-25 my-5 p-3 " style="background-color: pink;">
+<button class="btn btn-outline-primary">{{standings}}</button>
+<button class="btn btn-outline-primary">{{savings}}</button>
+<button class="btn btn-outline-primary">{{withdrawals}}</button>
+
+
+</div>
+<div class="acc w-50 mx-auto "> 
     {% if transactions%}
     
     {%for transaction in transactions%}
@@ -15,6 +22,7 @@
           <tr>
             
             <th scope="col">Id</th>
+            <th scope="col">Transaction code</th>
             <th scope="col">Type</th>
             <th scope="col">Amount</th>
             <th scope="col">Transaction date</th>
@@ -28,6 +36,7 @@
         <tbody>
           <tr>
             <th scope="row">{{transaction.id}}</th>
+            <td>{{transaction.transaction_code}}</td>
             <td>{{transaction.type}}</td>
             <td>{{transaction.amount}}</td>
             <td>{{transaction.time_made}}</td>

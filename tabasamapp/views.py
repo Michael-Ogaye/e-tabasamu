@@ -64,4 +64,20 @@ def update_account(request, username):
 def useracc_statement(request,id):
     user_f=User.objects.get(id=id)
     statements=Transaction.objects.filter(maker=user_f)
-    return render(request,'tabasamapp/statement.html',{'transactions':statements})
+    savings=[]
+    withdrawals=[]
+    for st in statements:
+        if st.type=='deposit':
+            saving=st.amount
+            savings.append(saving)
+        elif st.type=='withdrawal':
+            withdrawal=st.amount
+            withdrawals.append(withdrawal)
+
+         
+    
+    total_savings=sum(savings)
+    total_widhdrawals=sum(withdrawals)
+    account_standings=sum(savings)-sum(withdrawals)
+
+    return render(request,'tabasamapp/statement.html',{'transactions':statements,'standings':account_standings,'savings':total_savings,'withdrawals':total_widhdrawals})

@@ -53,13 +53,16 @@ class AccountStatement(models.Model):
         return f'{self.user.username} account statement'
 
 
-
+def code_gen():
+       str_size=12
+       allowed_chars = string.ascii_letters
+       return (''.join(random.choice(allowed_chars) for x in range(str_size))).upper()
 
 
 class Transaction(models.Model):
     acctype=(
 
-    ('withdrawal','widhdrawal'),
+    ('withdrawal','withdrawal'),
     ('deposit','deposit'),
 
     )
@@ -68,7 +71,7 @@ class Transaction(models.Model):
 
     type=models.CharField(choices=acctype, max_length=45)
     time_made=models.DateTimeField(auto_now_add=True)
-    transaction_code=models.CharField(max_length=254)
+    transaction_code=models.CharField(max_length=254,default=code_gen)
     amount=models.FloatField()
     facility=models.ForeignKey(Facility,on_delete=models.CASCADE)
     maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='transactions')
@@ -76,11 +79,11 @@ class Transaction(models.Model):
     
 
 
-    @property
-    def code_gen(self):
+    
+    def code_gen():
        str_size=12
        allowed_chars = string.ascii_letters
-       self.transaction_code= ''.join(random.choice(allowed_chars) for x in range(str_size))
+       return ''.join(random.choice(allowed_chars) for x in range(str_size))
 
 
     def __str__(self):
