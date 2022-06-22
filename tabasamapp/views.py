@@ -60,3 +60,8 @@ def update_account(request, username):
     else:
         form = UpdateAccountForm(instance=request.user.profile)
     return render(request, 'tabasamapp/editaccount.html', {'form': form})
+
+def useracc_stament(request,id):
+    user_f=User.objects.get(id=id)
+    statements=AccountStatement.objects.filter(user=user_f)
+    return render(request,'tabasamapp/statement.html',{'statements':statements})
