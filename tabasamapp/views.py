@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
 from .forms import FacilityForm,UpdateAccountForm,TransactionForm,SignupForm
 from .models import Facility,Transaction,AccountStatement,UserAccount
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
@@ -42,3 +43,9 @@ def make_transaction(request):
     else:
         form = TransactionForm()
     return render(request, 'tabasamapp/transaction.html', {'form': form})
+
+
+def User_account(request,pk):
+    user=User.objects.get(pk=pk)
+
+    return render(request, 'tabasamapp/useraccount.html',{'user':user})
