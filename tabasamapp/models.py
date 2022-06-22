@@ -72,7 +72,7 @@ class Transaction(models.Model):
     amount=models.FloatField()
     facility=models.ForeignKey(Facility,on_delete=models.CASCADE)
     maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='transactions')
-    statement=models.ForeignKey(AccountStatement,on_delete=models.CASCADE,related_name='transactions',null=True)
+    statement=models.ForeignKey(AccountStatement,on_delete=models.CASCADE,null=True)
     
 
 
@@ -84,7 +84,7 @@ class Transaction(models.Model):
 
 
     def __str__(self):
-        return f'{self.maker.username}'
+        return f'{self.type}'
        
 
 
