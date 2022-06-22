@@ -46,7 +46,7 @@ class UserAccount(models.Model):
         instance.account.save()
 
 class AccountStatement(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='statement')
+    user=models.ForeignKey(User,on_delete=models.CASCADE,related_name='statements')
     facility=models.ForeignKey(Facility, on_delete=models.CASCADE, related_name='statements')
     
     def __str__(self):
@@ -71,8 +71,9 @@ class Transaction(models.Model):
     transaction_code=models.CharField(max_length=254)
     amount=models.FloatField()
     facility=models.ForeignKey(Facility,on_delete=models.CASCADE)
-    maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
+    maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='transactions')
     statement=models.ForeignKey(AccountStatement,on_delete=models.CASCADE,related_name='transactions',null=True)
+    
 
 
     @property
