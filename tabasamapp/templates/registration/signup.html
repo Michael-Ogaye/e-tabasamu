@@ -2,10 +2,10 @@
 {% load cloudinary %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container w-50 mx-auto p-5" style="background-color: aliceblue;">
+<div class="container  mx-auto p-5" style="background-color: aliceblue;">
     <div class="row">
 
-        <div class=" w-100">
+        <div class=" ">
             <form action="" method="post" novalidate>
                 {% csrf_token %}
                 {{ form|crispy }}
