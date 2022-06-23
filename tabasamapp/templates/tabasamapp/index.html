@@ -1,4 +1,5 @@
 {% load cloudinary %} {% load crispy_forms_tags %}
+{% load static%}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -140,11 +141,19 @@
                         <a
                           href="{% url 'user_account' request.user.pk%}"
             
-                            class="btn btn-primary btn-block mb-4"
+                            class=" mb-4"
                             aria-controls="#picker-editor"
                           >
-                            Account
+                          {%if request.user.account.account_picture%}
+                          <img src="{{request.user.account.account_picture.url}}" alt="" style="width: 25%; aspect-ratio: 1;clip-path: circle();margin-left: 30%;">
+                          {%else%}
+                          <img src="{% static 'images/ptf.png'%}" alt="" style="width: 25%; aspect-ratio: 1;clip-path: circle();margin-left: 30%;">
+
+                          {%endif%}
+                          
+                            
                         </a>
+                        
                         {%else%}
                           
                           <a
@@ -528,6 +537,10 @@
         </div>
       </div>
     </div>
+    <hr>
+    <footer>
+      <p class="text-center">Made by Ogaye &copy June 2022</p>
+    </footer>
 
     <!-- End your project here-->
 
