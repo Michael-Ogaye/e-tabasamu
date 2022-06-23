@@ -90,6 +90,12 @@
               <div
                 class="container px-4 py-5 px-md-5 text-center text-lg-start"
               >
+              <div class="res">
+                {%for message in messages%}
+                <p class="alert alert-{{message.tags}} shadow text-center">{{message}}</p>
+                {%endfor%}
+              </div>
+               
                 <div class="row gx-lg-5 align-items-center mb-5">
                   <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
                     <h1
@@ -399,13 +405,15 @@
                   </div>
                   <div class="row d-flex justify-content-center">
                     <div class="col-lg-6">
-                      <form>
+                      <form action="{%url 'subscribe'%}" method="POST" >
                         <!-- Name input -->
+                        {%csrf_token%}
                         <div class="form-outline mb-4">
                           <input
                             type="text"
                             id="form4Example1"
                             class="form-control"
+                            name="name"
                           />
                           <label
                             class="form-label"
@@ -431,6 +439,7 @@
                             type="email"
                             id="form4Example2"
                             class="form-control"
+                            name="email"
                           />
                           <label
                             class="form-label"
@@ -456,6 +465,7 @@
                             class="form-control"
                             id="form4Example3"
                             rows="4"
+                            name="message"
                           ></textarea>
                           <label
                             class="form-label"
@@ -499,6 +509,11 @@
                           Send
                         </button>
                       </form>
+
+                      
+
+
+
                     </div>
                   </div>
                 </div>

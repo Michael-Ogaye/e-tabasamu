@@ -6,10 +6,10 @@
 
 {% block content %}
 
-<div class="standings mx-auto w-25 my-5 p-3 " style="background-color: pink;">
-<button class="btn btn-outline-primary">{{standings}}</button>
-<button class="btn btn-outline-primary">{{savings}}</button>
-<button class="btn btn-outline-primary">{{withdrawals}}</button>
+<div class="standings mx-auto  my-5 p-3 d-flex mx-auto " style="background-color: #f0f0f0;">
+<button class="btn btn-outline-info d-block  me-2" style=""><span class="text-success">STANDINGS</span><br>{{standings}}</button>
+<button class="btn btn-outline-info d-block me-2"><span class="text-info">DEPOSITS</span><br>{{savings}}</button>
+<button class="btn btn-outline-info d-block me-2"> <span class="text-danger">WITHDRAWALS</span><br>{{withdrawals}}</button>
 
 
 </div>

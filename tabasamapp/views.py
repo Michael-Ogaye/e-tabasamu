@@ -1,10 +1,12 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,authenticate
 from .forms import FacilityForm,UpdateAccountForm,TransactionForm,SignupForm
-from .models import Facility,Transaction,AccountStatement,UserAccount
+from .models import Facility,Transaction,AccountStatement,UserAccount,Subscription
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 import csv
+from django.contrib import messages
+
 
 # Create your views here.
 def index(request):
@@ -95,3 +97,17 @@ def statement_excel(request,id):
         writer.writerow([statement.id,statement.type,statement.amount,statement.time_made,statement.transaction_code])
 
     return response
+
+
+def Subscribing(request):
+    if request.method=='POST':
+        name=request.POST.get('name')
+        email=request.POST.get('email')
+        message=request.POST.get('message')
+        subscriber=Subscription.objects.create(name=name,email=email,message=message)
+        subscriber.save()
+
+
+        messages.success(request,f'Hi {name} Thank you for subscribing with us you, we are glad to have you onboard')
+
+    return redirect('index')

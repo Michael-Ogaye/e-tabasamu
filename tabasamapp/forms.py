@@ -25,7 +25,7 @@ class FacilityForm(forms.ModelForm):
 class TransactionForm(forms.ModelForm):
     class Meta:
         model=Transaction
-        fields=['type','amount','facility']
+        fields=['type','amount','facility','maker','statement']
 
 
 class UpdateAccountForm(forms.ModelForm):

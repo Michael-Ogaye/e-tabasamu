@@ -74,8 +74,8 @@ class Transaction(models.Model):
     transaction_code=models.CharField(max_length=254,default=code_gen)
     amount=models.FloatField()
     facility=models.ForeignKey(Facility,on_delete=models.CASCADE)
-    maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='transactions')
-    statement=models.ForeignKey(AccountStatement,on_delete=models.CASCADE,null=True)
+    maker=models.ForeignKey(User,on_delete=models.SET_NULL,null=True,related_name='transactions',blank=True)
+    statement=models.ForeignKey(AccountStatement,on_delete=models.CASCADE,null=True,blank=True)
     
 
 
@@ -90,6 +90,9 @@ class Transaction(models.Model):
         return f'{self.type}'
        
 
-
+class Subscription(models.Model):
+    name=models.CharField(max_length=90)
+    email=models.EmailField()
+    message=models.TextField()
 
 

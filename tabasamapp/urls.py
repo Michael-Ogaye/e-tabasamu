@@ -11,4 +11,5 @@ urlpatterns = [
     path('useracc_Statement/<int:id>',views.useracc_statement,name='account_statement'),
     path('update_acc/<str:username>',views.update_account, name='account_update'),
     path('csvfile/<int:id>',views.statement_excel,name='excela'),
+    path('subscribe/',views.Subscribing,name='subscribe')
 ]
