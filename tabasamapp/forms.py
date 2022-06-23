@@ -31,6 +31,6 @@ class TransactionForm(forms.ModelForm):
 class UpdateAccountForm(forms.ModelForm):
     class Meta:
         model=UserAccount
-        fields=['name','phone_no','account_picture']
+        fields=['name','phone_no','account_picture','info']
 
 

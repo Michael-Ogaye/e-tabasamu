@@ -27,6 +27,7 @@ class UserAccount(models.Model):
     account_picture = CloudinaryField('images')
     creation_date=models.DateField(auto_now_add=True)
     phone_no=models.IntegerField(blank=True, null=True)
+    info=models.TextField(null=True,default='E Tabasamu cares for your financial needs')
 
     
 

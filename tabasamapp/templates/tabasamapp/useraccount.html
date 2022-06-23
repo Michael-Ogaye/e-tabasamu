@@ -8,25 +8,34 @@
 
         <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
-              <div class="col-md-4">
+              <div class="col-md-4 mt-5">
                 <img
                   src="{{user.account.account_picture.url}}"
                   alt="Trendy Pants and Shoes"
-                  class="img-fluid rounded-start"
+                  class="img-fluid rounded-start ms-3"
+                  width="50%"
+                  style="aspect-ratio: 1; clip-path: circle();"
                 />
+                <p>{{user.email}}</p>
               </div>
               <div class="col-md-8">
                 <div class="card-body">
-                  <a class="btn btn-primary" href="{% url 'account_statement' user.pk %}">e-wallet</a>
-                  <a class="btn btn-primary" href="{% url 'account_update' user.username %}">Update Account</a>
-                  <h5 class="card-title">Profile</h5>
+                  <h5 class="card-title my-4" style="color: maroon;">Profile(user.username)</h5>
+                  <div>
+                  <a class="btn btn-outline-primary" href="{% url 'account_statement' user.pk %}">e-wallet</a>
+                  <a class="btn btn-outline-primary" href="{% url 'account_update' user.username %}">Update Account</a>
+                </div>
+                {%if user.account.info%}
                   <p class="card-text">
-                    This is a wider card with supporting text below as a natural lead-in to
-                    additional content. This content is a little bit longer.
-                  </p>
-                  <p class="card-text">
-                    <small class="text-muted">Last updated 3 mins ago</small>
-                  </p>
+                    {{user.account.info}}
+                  {%endif%}
+                  <hr>
+                  <div>
+                    <small> <span>Joined,</span>{{user.account.creation_date}}</small>|
+                    <small> <span>PhoneNo,</span>{{user.account.phone_no}}</small>
+
+                  </div>
+                  
                 </div>
               </div>
             </div>

@@ -31,7 +31,7 @@
 
   <!-- Start your project here-->
 
-  <div id="preview" class="preview" style="background-color: #536094;">
+  <div id="preview" class="preview p-3" style="background-color: #536094;">
       <div style="display: none;"></div>
       <div>
           <div data-draggable="true" class="" style="position: relative;">
@@ -64,9 +64,11 @@
                                 <!-- Icons -->
                                 <li class="nav-item me-3 me-lg-0">
                                   <a class="nav-link" href="{% url 'index'%}">
-                                    <i class="fa-solid fa-house"></i>
+                                    <i class="fa-solid fa-house text-primary"></i>
                                   </a>
                                 </li>
+
+                                {%if request.user.is_authenticated%}
                                 
 
 
@@ -79,7 +81,7 @@
                                       data-mdb-toggle="dropdown"
                                       aria-expanded="false"
                                     >
-                                    <i class="fa-regular fa-square-plus"></i>
+                                    <i class="fa-regular fa-square-plus text-primary"></i>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                       <li>
@@ -111,7 +113,7 @@
                                     data-mdb-toggle="dropdown"
                                     aria-expanded="false"
                                   >
-                                    <i class="fas fa-user"></i>
+                                    <i class="fas fa-user text-primary"></i>
                                   </a>
                                   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li>
@@ -132,6 +134,7 @@
                                     </li>
                                   </ul>
                                 </li>
+                                {%endif%}
                               </ul>
                             </div>
                           </nav>
@@ -145,9 +148,9 @@
 
 
 
-                          <div class="row g-0 d-flex align-items-center">
+                          <div class="row g-0 d-flex align-items-center p-3">
                               <div class="col-lg-4 d-none d-lg-flex"> <img
-                                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQF-ysph_DwlFOggU_zeMrXjembURtDaMrXww&usqp=CAU"
+                                      src="https://images.pexels.com/photos/6765373/pexels-photo-6765373.jpeg?auto=compress&cs=tinysrgb&w=1600"
                                       alt="money"
                                       class="w-100  rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5"
                                       aria-controls="#picker-editor"> </div>
