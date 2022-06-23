@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 import csv
 from django.contrib import messages
+from .emails import send_email
 
 
 # Create your views here.
@@ -43,6 +44,12 @@ def make_transaction(request):
         form = TransactionForm(request.POST)
         if form.is_valid():
             transaction=form.save()
+            transact_code=transaction.transaction_code
+            username=transaction.maker.username
+            amount=form.cleaned_data.get('amount')
+            type=form.cleaned_data.get('type')
+            email=transaction.maker.email
+            send_email(username,email,amount,transact_code,type)
             return redirect('index')
     else:
         form = TransactionForm()

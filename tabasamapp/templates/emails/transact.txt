@@ -1,0 +1,1 @@
+ confirmed {{trcode}},a {{type}} of ksh {{amount}} has been made by {{username}}
