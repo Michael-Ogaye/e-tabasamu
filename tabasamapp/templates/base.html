@@ -67,11 +67,40 @@
                                     <i class="fa-solid fa-house"></i>
                                   </a>
                                 </li>
-                                <li class="nav-item me-3 me-lg-0">
-                                  <a class="nav-link" href="{% url 'add_facility'%}">
-                                    Add facility
-                                  </a>
-                                </li>
+                                
+
+
+                                <li class="nav-item me-3 me-lg-0 dropdown">
+                                    <a
+                                      class="nav-link dropdown-toggle"
+                                      href="#"
+                                      id="navbarDropdown"
+                                      role="button"
+                                      data-mdb-toggle="dropdown"
+                                      aria-expanded="false"
+                                    >
+                                    <i class="fa-regular fa-square-plus"></i>
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                      <li>
+                                        <a class="dropdown-item" href="{% url 'add_facility' %}"> Add Facility</a>
+                                      </li>
+                                      <li>
+                                        <a class="dropdown-item" href="{% url 'make_trans'%}">Make Transaction </a>
+                                      </li>
+                                      
+                                      
+                                      </ul>
+                                    </li>
+                                      
+
+
+
+
+
+
+
+
                                 <!-- Icon dropdown -->
                                 <li class="nav-item me-3 me-lg-0 dropdown">
                                   <a

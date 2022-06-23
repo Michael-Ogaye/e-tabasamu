@@ -53,10 +53,10 @@ def User_account(request,pk):
 def update_account(request, username):
     user = User.objects.get(username=username)
     if request.method == 'POST':
-        form = UpdateAccountForm(request.POST, request.FILES, instance=request.user.profile)
+        form = UpdateAccountForm(request.POST, request.FILES, instance=request.user.account)
         if form.is_valid():
             form.save()
-            return redirect('user_account', user.username)
+            return redirect('user_account', user.pk)
     else:
         form = UpdateAccountForm(instance=request.user.account)
     return render(request, 'tabasamapp/editaccount.html', {'form': form})
