@@ -120,6 +120,12 @@
                                     <li>
                                       <a class="dropdown-item" href="{% url 'account_statement' request.user.pk%}">Account statements</a>
                                     </li>
+
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'excela' request.user.id%}">Download</a>
+                                      </li>
+
+
                                     <li><hr class="dropdown-divider" /></li>
                                     <li>
                                       <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>

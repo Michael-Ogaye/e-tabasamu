@@ -3,6 +3,8 @@ from django.contrib.auth import login,authenticate
 from .forms import FacilityForm,UpdateAccountForm,TransactionForm,SignupForm
 from .models import Facility,Transaction,AccountStatement,UserAccount
 from django.contrib.auth.models import User
+from django.http import HttpResponse
+import csv
 
 # Create your views here.
 def index(request):
@@ -81,3 +83,15 @@ def useracc_statement(request,id):
     account_standings=sum(savings)-sum(withdrawals)
 
     return render(request,'tabasamapp/statement.html',{'transactions':statements,'standings':account_standings,'savings':total_savings,'withdrawals':total_widhdrawals})
+def statement_excel(request,id):
+    response=HttpResponse(content_type='text/csv')
+    response['Content-Disposition']='attachment; filename=statements.csv'
+
+    writer=csv.writer(response)
+    user_f=User.objects.get(id=id)
+    statements=Transaction.objects.filter(maker=user_f)
+    writer.writerow(['ID','Transaction type','Amount','Date','Transaction code'])
+    for statement in statements:
+        writer.writerow([statement.id,statement.type,statement.amount,statement.time_made,statement.transaction_code])
+
+    return response
