@@ -64,7 +64,7 @@ def User_account(request,pk):
 def update_account(request, username):
     user = User.objects.get(username=username)
     if request.method == 'POST':
-        form = UpdateAccountForm(request.POST, request.FILES, instance=request.user.account)
+        form = UpdateAccountForm(request.POST or None, request.FILES or None, instance=request.user.account)
         if form.is_valid():
             form.save()
             return redirect('user_account', user.pk)
