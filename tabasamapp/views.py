@@ -50,7 +50,7 @@ def make_transaction(request):
             type=form.cleaned_data.get('type')
             email=transaction.maker.email
             send_email(username,email,amount,transact_code,type)
-            return redirect('index')
+            return redirect('account_statement',request.user.id)
     else:
         form = TransactionForm()
     return render(request, 'tabasamapp/transaction.html', {'form': form})
